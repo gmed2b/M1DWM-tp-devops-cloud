@@ -21,6 +21,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: ./docker/8.4
+          file: ./docker/8.4/Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository }}/tp-devops-app:latest
