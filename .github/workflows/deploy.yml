@@ -24,9 +24,9 @@ jobs:
           GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
-          echo "$GHCR_TOKEN" | docker login ghcr.io -u USERNAME --password-stdin
-          docker pull ghcr.io/OWNER/REPOSITORY:TAG
-          docker stop CONTAINER_NAME || true
-          docker rm CONTAINER_NAME || true
-          docker run -d --name CONTAINER_NAME -p 80:80 ghcr.io/OWNER/REPOSITORY:TAG
+          echo "$GHCR_TOKEN" | docker login ghcr.io -u gmed2b --password-stdin
+          docker pull ghcr.io/gmed2b/m1dwm-tp-devops-cloud:latest
+          docker stop tp-devops || true
+          docker rm tp-devops || true
+          docker run -d --name tp-devops -p 80:80 ghcr.io/gmed2b/m1dwm-tp-devops-cloud:latest
           EOF
