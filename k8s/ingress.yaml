@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: tp-devops-cloud-ingress
+spec:
+    rules:
+        - host: tp-devops-cloud.local
+          http:
+              paths:
+                  - path: /
+                    pathType: Prefix
+                    backend:
+                        service:
+                            name: tp-devops-cloud-service
+                            port:
+                                number: 80

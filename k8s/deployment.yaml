@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: tp-devops-cloud
+    labels:
+        app: tp-devops-cloud
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: tp-devops-cloud
+    template:
+        metadata:
+            labels:
+                app: tp-devops-cloud
+        spec:
+            containers:
+                - name: tp-devops-cloud
+                  image: ghcr.io/gmed2b/m1dwm-tp-devops-cloud/tp-devops-app:latest
+                  ports:
+                      - containerPort: 80
